@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Jobs</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #7b2ff7, #f107a3);
+    color: white;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    margin: auto;
+}
+
+.search {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.job-card {
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: scale(1.03);
+}
+
+.job-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.job-info {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.apply-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: purple;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.apply-btn:hover {
+    background: #eee;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Find Jobs</div>
+
+<div class="container">
+
+<input type="text" class="search" placeholder="Search for jobs or skills...">
+
+<!-- Tailoring Job -->
+<div class="job-card" style="background: linear-gradient(135deg, #a855f7, #ec4899);">
+    <div class="job-title">Tailoring Job</div>
+    <div class="job-info">📍 Delhi</div>
+    <div class="job-info">💰 ₹8,000 - 12,000</div>
+    <div class="job-info">⏰ Full-time</div>
+    <button class="apply-btn" onclick="applyJob('Tailoring Job')">Apply Now</button>
+</div>
+
+<!-- Beauty Parlour Assistant -->
+<div class="job-card" style="background: linear-gradient(135deg, #14b8a6, #22c55e);">
+    <div class="job-title">Beauty Parlour Assistant</div>
+    <div class="job-info">📍 Mumbai</div>
+    <div class="job-info">💰 ₹10,000 - 15,000</div>
+    <div class="job-info">⏰ Full-time</div>
+    <button class="apply-btn" onclick="applyJob('Beauty Parlour Assistant')">Apply Now</button>
+</div>
+
+<!-- Mehendi Artist -->
+<div class="job-card" style="background: linear-gradient(135deg, #f97316, #fb923c);">
+    <div class="job-title">Home-based Mehendi Artist</div>
+    <div class="job-info">📍 Bengaluru</div>
+    <div class="job-info">💰 ₹500 - 1500</div>
+    <div class="job-info">⏰ Per event</div>
+    <button class="apply-btn" onclick="applyJob('Mehendi Artist')">Apply Now</button>
+</div>
+
+<!-- Online Tutor -->
+<div class="job-card" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+    <div class="job-title">Online Tutor</div>
+    <div class="job-info">📍 Remote</div>
+    <div class="job-info">💰 ₹300 / hour</div>
+    <div class="job-info">⏰ Per hour</div>
+    <button class="apply-btn" onclick="applyJob('Online Tutor')">Apply Now</button>
+</div>
+
+</div>
+
+<script>
+function applyJob(jobName){
+    window.location.href = "apply.html?job=" + jobName;
+}
+</script>
+
+</body>
+</html>

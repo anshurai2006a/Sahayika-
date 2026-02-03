@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal Aid</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(135deg,#8b5cf6,#ec4899);
+    color:white;
+}
+
+.header{
+    text-align:center;
+    padding:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    max-width:420px;
+    margin:auto;
+}
+
+/* Card */
+.card{
+    padding:18px;
+    border-radius:18px;
+    margin-top:18px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Emergency */
+.emergency{
+    background: linear-gradient(135deg,#ef4444,#f97316);
+}
+
+.btn-group{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:#7c3aed;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* Topic cards */
+.topic-title{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.topic-desc{
+    font-size:14px;
+    opacity:0.9;
+}
+
+.learn-btn{
+    margin-top:12px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Legal Aid</div>
+
+<div class="container">
+
+<!-- Emergency Help -->
+<div class="card emergency">
+    <h3>Emergency Help</h3>
+    <p>If you are in danger, contact immediately</p>
+
+    <div class="btn-group">
+        <button class="btn" onclick="callPolice()">📞 181</button>
+        <button class="btn" onclick="openChat()">💬 Chat</button>
+    </div>
+</div>
+
+<!-- Women Rights -->
+<div class="card" style="background:linear-gradient(135deg,#a855f7,#ec4899)">
+    <div class="topic-title">Women's Rights</div>
+    <div class="topic-desc">Know your fundamental rights</div>
+
+    <button class="learn-btn"
+    onclick="openArticle('https://www.india.gov.in/topics/law-justice/womens-rights')">
+    Read Article
+    </button>
+
+    <button class="learn-btn"
+    onclick="openVideo('https://www.youtube.com/results?search_query=women+rights+in+india+explained')">
+    Watch Video
+    </button>
+</div>
+
+<!-- Property Rights -->
+<div class="card" style="background:linear-gradient(135deg,#14b8a6,#22c55e)">
+    <div class="topic-title">Property Rights</div>
+    <div class="topic-desc">Inheritance and ownership</div>
+
+    <button class="learn-btn"
+    onclick="openArticle('https://www.india.gov.in/topics/law-justice/property-rights')">
+    Read Article
+    </button>
+
+    <button class="learn-btn"
+    onclick="openVideo('https://www.youtube.com/results?search_query=property+rights+in+india+explained')">
+    Watch Video
+    </button>
+</div>
+
+<!-- Workplace Rights -->
+<div class="card" style="background:linear-gradient(135deg,#f97316,#fb923c)">
+    <div class="topic-title">Workplace Rights</div>
+    <div class="topic-desc">Safe and fair work environment</div>
+
+    <button class="learn-btn"
+    onclick="openArticle('https://labour.gov.in/whats-new/workers-rights')">
+    Read Article
+    </button>
+
+    <button class="learn-btn"
+    onclick="openVideo('https://www.youtube.com/results?search_query=employee+rights+in+india')">
+    Watch Video
+    </button>
+</div>
+
+<!-- Marriage & Divorce -->
+<div class="card" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">
+    <div class="topic-title">Marriage & Divorce</div>
+    <div class="topic-desc">Legal advice and process</div>
+
+    <button class="learn-btn"
+    onclick="openArticle('https://www.legalserviceindia.com/legal/article-1260-laws-related-to-marriage-and-divorce-in-india.html')">
+    Read Article
+    </button>
+
+    <button class="learn-btn"
+    onclick="openVideo('https://www.youtube.com/results?search_query=marriage+and+divorce+law+india')">
+    Watch Video
+    </button>
+</div>
+
+</div>
+
+<script>
+function callPolice(){
+    alert("Dial 181 from your phone");
+}
+
+function openChat(){
+    alert("Live legal chat coming soon");
+}
+
+function openArticle(link){
+    window.open(link,"_blank");
+}
+
+function openVideo(link){
+    window.open(link,"_blank");
+}
+</script>
+
+</body>
+</html>
