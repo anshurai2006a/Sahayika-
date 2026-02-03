@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Users, Heart, Share2, MessageCircle, TrendingUp, Sparkles } from "lucide-react";
+import { Heart, Share2, MessageCircle, TrendingUp, Sparkles } from "lucide-react";
 
 export default function CommunityPage() {
     const posts = [
