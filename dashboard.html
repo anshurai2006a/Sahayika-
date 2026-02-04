@@ -342,7 +342,60 @@
             if (!localStorage.getItem('sahayika_user')) {
                  window.location.href = 'index.html';
             }
+            renderDashboardData();
         };
+
+        function renderDashboardData() {
+            const apps = JSON.parse(localStorage.getItem('sahayika_applications') || '[]');
+            const enrolls = JSON.parse(localStorage.getItem('sahayika_enrollments') || '[]');
+
+            // Update Counts
+            document.getElementById('count-apps').innerText = apps.length;
+            document.getElementById('count-enrolls').innerText = enrolls.length;
+
+            // Render Activity
+            const activityList = document.getElementById('recent-activity-list');
+            const latestActivities = [
+                ...apps.map(a => `Applied to ${a.company} for ${a.role}`),
+                ...enrolls.map(e => `Enrolled in ${e.title}`)
+            ].reverse().slice(0, 5);
+
+            activityList.innerHTML = latestActivities.map(act => `
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary);"></div>
+                    <p style="font-weight: 600; font-size: 0.95rem;">${act}</p>
+                </div>
+            `).join('');
+
+            // Render Jobs Table
+            const appsTable = document.getElementById('apps-table-body');
+            appsTable.innerHTML = apps.map(a => `
+                <tr>
+                    <td>
+                        <div style="font-weight: 800;">${a.role}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">${a.company}</div>
+                    </td>
+                    <td style="font-weight: 600;">${a.date}</td>
+                    <td><span class="badge-status ${a.status === 'Accepted' ? 'status-success' : 'status-pending'}">${a.status}</span></td>
+                    <td><button class="btn-outline" style="padding: 0.4rem 1rem;">Details</button></td>
+                </tr>
+            `).join('');
+
+            // Render Learning Grid
+            const learningGrid = document.getElementById('learning-grid');
+            learningGrid.innerHTML = enrolls.map(e => `
+                <div class="glass-card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0;">${e.title}</h4>
+                        <span style="color: var(--primary); font-weight: 800;">${e.progress}%</span>
+                    </div>
+                    <div style="width: 100%; height: 10px; background: var(--bg-subtle); border-radius: 10px; overflow: hidden; margin-bottom: 2rem;">
+                        <div style="width: ${e.progress}%; height: 100%; background: var(--primary);"></div>
+                    </div>
+                    <button class="btn-primary btn-full">Continue Lessons</button>
+                </div>
+            `).join('');
+        }
     </script>
 </body>
 </html>
