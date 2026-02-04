@@ -29,6 +29,16 @@ const jobsGrid = document.getElementById('jobsGrid');
 const communityContent = document.getElementById('communityContent');
 
 // Scroll Reveal
+// Navbar Scroll Effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
 const revealSections = () => {
     const observerOptions = {
         threshold: 0.15,
