@@ -2,12 +2,17 @@
 
 :root {
     /* Sophisticated Pink Palette */
-    --primary: #f43f5e; /* Rose 500 */
-    --primary-hover: #e11d48; /* Rose 600 */
-    --primary-light: #fff1f2; /* Rose 50 */
-    --secondary: #fb7185; /* Rose 400 */
-    --accent: #fda4af; /* Rose 300 */
-    
+    --primary: #f43f5e;
+    /* Rose 500 */
+    --primary-hover: #e11d48;
+    /* Rose 600 */
+    --primary-light: #fff1f2;
+    /* Rose 50 */
+    --secondary: #fb7185;
+    /* Rose 400 */
+    --accent: #fda4af;
+    /* Rose 300 */
+
     /* Neutrals */
     --bg-main: #ffffff;
     --bg-subtle: #fff9fb;
@@ -15,12 +20,12 @@
     --text-muted: #64748b;
     --border: #f1f5f9;
     --border-pink: #fecdd3;
-    
+
     /* Functional */
     --success: #10b981;
     --error: #ef4444;
     --nav-height: 80px;
-    
+
     /* Shadows & Effects */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -43,7 +48,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     /* Sophisticated Mesh Background */
-    background-image: 
+    background-image:
         radial-gradient(at 0% 0%, rgba(244, 63, 94, 0.03) 0px, transparent 50%),
         radial-gradient(at 100% 0%, rgba(251, 113, 133, 0.03) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(244, 63, 94, 0.03) 0px, transparent 50%),
@@ -51,7 +56,10 @@ body {
     background-attachment: fixed;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-weight: 800;
     letter-spacing: -0.02em;
 }
@@ -215,8 +223,13 @@ h1, h2, h3, h4 {
 }
 
 @keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(50px, 50px) rotate(10deg); }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(50px, 50px) rotate(10deg);
+    }
 }
 
 .hero-content {
@@ -260,6 +273,13 @@ h1, h2, h3, h4 {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
 }
 
 /* --- Feature Cards --- */
@@ -388,7 +408,10 @@ h1, h2, h3, h4 {
 
 .sos-pulse {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 80px;
     background: var(--primary);
     z-index: -1;
@@ -396,8 +419,15 @@ h1, h2, h3, h4 {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.6); opacity: 0; }
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
 }
 
 /* --- Job Cards --- */
@@ -474,7 +504,9 @@ h1, h2, h3, h4 {
     z-index: 0;
 }
 
-.legal-card h4, .legal-card p, .legal-card button {
+.legal-card h4,
+.legal-card p,
+.legal-card button {
     position: relative;
     z-index: 1;
 }
@@ -586,7 +618,8 @@ h1, h2, h3, h4 {
     transition: all 0.3s;
 }
 
-.community-tab.active, .community-tab:hover {
+.community-tab.active,
+.community-tab:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
@@ -650,7 +683,8 @@ h1, h2, h3, h4 {
     transition: 0.3s;
 }
 
-.filter-btn.active, .filter-btn:hover {
+.filter-btn.active,
+.filter-btn:hover {
     background: var(--primary-light);
     color: var(--primary);
     border-color: var(--primary);
@@ -672,8 +706,14 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
-    .hamburger { display: flex; }
-    .nav-buttons { display: none; }
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-buttons {
+        display: none;
+    }
+
     .nav-links.active {
         display: flex;
         flex-direction: column;
