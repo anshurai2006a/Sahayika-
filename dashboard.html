@@ -10,7 +10,7 @@
             display: flex;
             min-height: 100vh;
             padding-top: var(--nav-height);
-            background: #fffafa;
+            background: var(--bg-main);
         }
 
         .sidebar {
@@ -47,6 +47,10 @@
             transform: translateX(5px);
         }
 
+        .sidebar-link.active {
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+        }
+
         .dashboard-content {
             margin-left: 280px;
             flex: 1;
@@ -73,13 +77,31 @@
             border-radius: 30px;
             padding: 2.5rem;
             text-align: center;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .stat-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--border-pink);
+            border-color: var(--primary-light);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
         .stat-icon {
@@ -91,7 +113,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--text-main);
+            color: var(--primary);
             margin-bottom: 0.25rem;
         }
 
@@ -124,19 +146,23 @@
         }
 
         th {
-            background: var(--bg-subtle);
+            background: var(--primary-light);
             padding: 1.5rem;
             text-align: left;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-muted);
+            color: var(--primary);
             font-weight: 800;
         }
 
         td {
             padding: 1.5rem;
             border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover td {
+            background: var(--primary-50);
         }
 
         .badge-status {
@@ -147,7 +173,7 @@
         }
 
         .status-success { background: #ecfdf5; color: #10b981; }
-        .status-pending { background: #fffbeb; color: #f59e0b; }
+        .status-pending { background: #fce7f3; color: var(--primary); }
 
         @media (max-width: 992px) {
             .sidebar { width: 90px; }

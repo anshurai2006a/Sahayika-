@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,23 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .safety-hero {
-            background: linear-gradient(180deg, var(--primary-light) 0%, transparent 100%);
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg-main) 100%);
             padding: 140px 2rem 80px;
             text-align: center;
+            position: relative;
         }
+
+        .safety-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(244, 114, 182, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
         .contact-card {
             background: white;
             border: 1px solid var(--border);
@@ -19,17 +33,20 @@
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
+
         .contact-card:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-md);
+            transform: translateX(5px);
         }
+
         .contact-avatar {
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: var(--primary-light);
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -39,6 +56,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
@@ -67,9 +85,11 @@
         </header>
 
         <section class="section-section" style="padding-top: 0;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; align-items: start;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; align-items: start;">
                 <!-- Trigger Card -->
-                <div class="glass-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 4rem 2rem;">
+                <div class="glass-card"
+                    style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 4rem 2rem;">
                     <h3 style="margin-bottom: 3rem;">Distress Signal</h3>
                     <button class="sos-button" onclick="triggerSOS()">
                         <div class="sos-pulse"></div>
@@ -100,7 +120,8 @@
                             </div>
                             <span style="color: var(--success); font-weight: 800; font-size: 0.8rem;">ACTIVE</span>
                         </div>
-                        <button class="btn-outline btn-full" style="margin-top: 1rem; border: 2px dashed var(--border-pink);">+ Add New Guardian</button>
+                        <button class="btn-outline btn-full"
+                            style="margin-top: 1rem; border: 2px dashed var(--border-pink);">+ Add New Guardian</button>
                     </div>
                 </div>
             </div>
@@ -117,7 +138,8 @@
                     <div class="safety-item glass-card">
                         <div class="safety-icon">📞</div>
                         <h4>Fake Call</h4>
-                        <p>Instantly trigger a realistic incoming call to exit uncomfortable social situations safely.</p>
+                        <p>Instantly trigger a realistic incoming call to exit uncomfortable social situations safely.
+                        </p>
                         <button class="btn-outline" style="margin-top: 1.5rem; width: 100%;">Trigger Call</button>
                     </div>
                     <div class="safety-item glass-card">
@@ -133,7 +155,8 @@
 
     <footer style="background: var(--bg-subtle); padding: 5rem 2rem;">
         <div style="text-align: center; border-top: 1px solid var(--border); padding-top: 3rem;">
-            <p style="color: var(--text-muted); font-weight: 600;">&copy; 2026 Sahayika Platform. Built for your safety.</p>
+            <p style="color: var(--text-muted); font-weight: 600;">&copy; 2026 Sahayika Platform. Built for your safety.
+            </p>
         </div>
     </footer>
 
@@ -148,4 +171,5 @@
         });
     </script>
 </body>
+
 </html>
