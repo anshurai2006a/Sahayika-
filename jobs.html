@@ -96,7 +96,7 @@
                     <div class="job-tags" style="margin-bottom: 2rem;">
                         ${job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('')}
                     </div>
-                    <button class="btn-primary btn-full" onclick="alert('Application started for ${job.title}!')">Quick Apply</button>
+                    <button class="btn-primary btn-full" onclick="applyJob('${job.title}', '${job.company}')">Quick Apply</button>
                 </div>
             `).join('');
 

@@ -30,22 +30,48 @@ const communityContent = document.getElementById('communityContent');
 
 // Scroll Reveal
 const revealSections = () => {
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('reveal-active');
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.section-section, .features, .glass-card').forEach(el => {
+    const elementsToReveal = document.querySelectorAll('.section-section, .features, .glass-card, .feature-card, .job-card, .legal-card, .skill-card');
+
+    elementsToReveal.forEach(el => {
+        // Initial state
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
+
+    // Fallback: Show all elements after 2 seconds if observer fails
+    setTimeout(() => {
+        elementsToReveal.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }, 2000);
 };
+
+// Add a helper for reveal class in CSS via JS for convenience
+const style = document.createElement('style');
+style.textContent = `
+    .reveal-active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+document.head.appendChild(style);
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,7 +117,7 @@ function switchModal(oldId, newId) {
 }
 
 // Close modal when clicking outside
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target.classList.contains('modal')) {
         event.target.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -114,9 +140,9 @@ function triggerSOS() {
     if (btn) {
         btn.style.backgroundColor = '#b91c1c';
         btn.innerHTML = '<span>SENT</span>';
-        
+
         alert(`🚨 EMERGENCY ALERT SENT!\nYour location has been shared with emergency contacts and local authorities.`);
-        
+
         setTimeout(() => {
             btn.style.backgroundColor = 'var(--error)';
             btn.innerHTML = '<div class="sos-pulse"></div><span>SOS</span>';
@@ -140,11 +166,11 @@ window.applyJob = (title, company) => {
 function renderJobs(filter) {
     const grid = document.getElementById('jobsGrid');
     if (!grid) return;
-    
+
     const filteredJobs = filter === 'all' ? jobs : jobs.filter(job => job.category === filter);
-    
+
     grid.innerHTML = filteredJobs.map(job => `
-        <div class="job-card glass-card">
+        <div class="job-card glass-card reveal-active" style="opacity: 1; transform: translateY(0);">
             <div class="job-card-header">
                 <div>
                     <h4 class="job-title">${job.title}</h4>
@@ -167,11 +193,11 @@ function renderJobs(filter) {
 function renderCommunity(tab) {
     const contentArea = document.getElementById('communityContent');
     if (!contentArea) return;
-    
+
     const content = communityPosts[tab];
-    
+
     contentArea.innerHTML = content.map(item => `
-        <div class="community-post" style="padding: 2rem; border-bottom: 1px solid var(--border); transition: 0.3s; border-radius: 16px;">
+        <div class="community-post reveal-active" style="padding: 2rem; border-bottom: 1px solid var(--border); transition: 0.3s; border-radius: 16px; opacity: 1; transform: translateY(0);">
             <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 1.5rem;">
                 <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary); font-size: 1rem;">
                     ${item.avatar}
@@ -226,7 +252,7 @@ function setupEventListeners() {
             const content = btn.closest('.skill-content');
             const h4 = content ? content.querySelector('h4') : null;
             const title = h4 ? h4.innerText : "this course";
-            
+
             let enrollments = JSON.parse(localStorage.getItem('sahayika_enrollments') || '[]');
             if (!enrollments.find(e => e.title === title)) {
                 enrollments.push({ title: title, progress: 0 });
@@ -244,12 +270,12 @@ function setupEventListeners() {
             e.preventDefault();
             const button = form.querySelector('button');
             const originalText = button ? button.innerText : 'Submit';
-            
+
             if (button) {
                 button.innerText = 'Processing...';
                 button.disabled = true;
             }
-            
+
             setTimeout(() => {
                 // Simulate Auth
                 if (form.closest('#loginModal') || form.closest('#signupModal')) {
